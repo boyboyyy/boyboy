@@ -2,6 +2,7 @@ package com.boy.service.impl;
 
 import com.boy.domain.bo.UserLoginBo;
 import com.boy.domain.bo.UserRegBo;
+import com.boy.domain.vo.LoginResultByVo;
 import com.boy.domain.vo.ResponseVo;
 import com.boy.utils.JwtUtil;
 import org.springframework.stereotype.Service;
@@ -74,9 +75,8 @@ public class UserServiceImpl implements UserService{
         user.setUpdateTime(new Date());
         userMapper.updateLoginTime(user);
 
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        hashMap.put(jwt, user.getRole());
-        return new ResponseVo("登录成功",hashMap,"0x200");
+        LoginResultByVo loginResultByVo = new LoginResultByVo(jwt, user.getRole());
+        return new ResponseVo("登录成功",loginResultByVo,"0x200");
     }
 
 
