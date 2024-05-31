@@ -24,9 +24,17 @@
     *
     from fruit
     where id = #{id}
+    limit 1
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectAll" resultType="java.lang.Integer">
+      select
+        *
+      from
+        fruit
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from fruit
     where id = #{id,jdbcType=BIGINT}

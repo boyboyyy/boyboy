@@ -15,6 +15,8 @@ public interface FruitService{
 
     ResponseVo updateByPrimaryKeySelective(Fruit record);
 
+    ResponseVo selectAll();
+
 
 //    ResponseVo queryByPage(FruitPagingToGetDataBo );
 }

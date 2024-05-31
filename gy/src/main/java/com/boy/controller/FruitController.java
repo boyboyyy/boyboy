@@ -27,7 +27,10 @@ public class FruitController {
     private FruitService fruitService;
 
 
-
+    @GetMapping
+    public String selectAll() {
+        return JSONArray.toJSONString(fruitService.selectAll());
+    }
 
     /**
      * 通过主键查询单条数据
