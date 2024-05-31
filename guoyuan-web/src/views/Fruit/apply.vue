@@ -2,11 +2,10 @@
     <el-scrollbar>
         <el-table :data="tableData">
             <el-table-column type="index" label="ID" width="100" />
-            <el-table-column prop="fruitCase" label="苹果的种类" width="200" />
-            <el-table-column prop="mac" label="种植面积" width="200" />
-            <el-table-column prop="season" label="成熟季节" width="200" />
-            <el-table-column prop="input" label="水果产量" width="200" />
-            <el-table-column label="操作">
+            <el-table-column prop="fruitCase" label="水果的种类" width="300" />
+            <el-table-column prop="mac" label="种植面积" width="300" />
+            <el-table-column prop="input" label="水果产量" width="300" />
+            <el-table-column label="操作" width="250">
                 <template #default="scope">
                     <el-button size="small" @click="handleEdit()">
                         修改
@@ -21,16 +20,12 @@
     <!-- 修改窗口 -->
     <el-dialog v-model="dialogVisible" title="请修改你的个人信息" width="500">
         <el-form class="demo-ruleForm">
-            <el-form-item label="苹果的种类:">
+            <el-form-item label="水果的种类:">
                 <el-input v-model="userUpData.user.fruitCase" />
             </el-form-item>
 
             <el-form-item label="种植面积:">
                 <el-input v-model="userUpData.user.mac" />
-            </el-form-item>
-
-            <el-form-item label="成熟季节:">
-                <el-input v-model="userUpData.user.season" />
             </el-form-item>
 
             <el-form-item label="水果产量:">

@@ -44,8 +44,8 @@ const user = reactive({
 const login = async () => {
   const result: any = await loginByroot(user)
   if (result.data.code == '0x200') {
-    // setCookie('token', { token: result.data.token }, 24)
-    // setCookie('user', result.data.data, 24)
+    setCookie('token', { token: result.data.token }, 24)
+    setCookie('user', result.data.data, 24)
     Router.push('/home')
     ElNotification({
       title: '登录成功',

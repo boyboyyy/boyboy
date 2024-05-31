@@ -12,10 +12,8 @@
                 </el-icon>果园种植信息
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1" @click="toApply">苹果种植信息</el-menu-item>
-                <el-menu-item index="1-2" @click="toBanana">香蕉种植信息</el-menu-item>
-                <el-menu-item index="1-3" @click="toLiu">榴莲种植信息</el-menu-item>
-                <el-menu-item index="1-4" @click="toStrawbery">草莓种植信息</el-menu-item>
+                <el-menu-item index="1-1" @click="toApply">水果种植信息</el-menu-item>
+                <el-menu-item index="1-2" @click="toBanana">水果种植季节</el-menu-item>
               </el-menu-item-group>
             </el-sub-menu>
 
