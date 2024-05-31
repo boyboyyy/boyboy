@@ -1,9 +1,11 @@
 package com.boy.controller;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.boy.domain.User;
+import com.boy.domain.bo.UserLoginBo;
+import com.boy.domain.vo.ResponseVo;
 import com.boy.service.UserService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,41 @@ public class UserController {
      */
     @Resource
     private UserService userService;
+
+
+
+    /**
+     *  @Auther Oh… Yeah!!! 2024-3-5
+     *  用户注册
+     * @param userLoginBo
+     * @return String.class
+     */
+    @PostMapping("/userReg")
+    @ApiOperation("用户注册")
+    public String userReg(@RequestBody UserLoginBo userLoginBo){
+        if(userLoginBo != null){
+            JSONArray.toJSONString(new ResponseVo("参数为null",null,"0x455"));
+        }
+
+        return JSONArray.toJSONString(userService.userReg(userLoginBo));
+    }
+
+
+    /**
+     *  @Auther Oh… Yeah!!! 2024-3-5
+     *  用户登录
+     * @param userLoginBo
+     * @return
+     */
+    @PostMapping("/login")
+    @ApiOperation("用户登录")
+    public String userLogin(@RequestBody UserLoginBo userLoginBo){
+        if(userLoginBo == null){
+            JSONArray.toJSONString(new ResponseVo("参数为null",null,"0x455"));
+        }
+
+        return JSONArray.toJSONString(userService.userLogin(userLoginBo));
+    }
 
 
 
