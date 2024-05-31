@@ -1,11 +1,11 @@
-package com.hln;
+package com.boy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GyApplication {
+public class BoyApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GyApplication.class, args);
+        SpringApplication.run(BoyApplication.class, args);
     }
 }

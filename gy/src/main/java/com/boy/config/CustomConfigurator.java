@@ -1,4 +1,4 @@
-package com.hln.config;
+package com.boy.config;
 
 import org.springframework.context.annotation.Configuration;
 

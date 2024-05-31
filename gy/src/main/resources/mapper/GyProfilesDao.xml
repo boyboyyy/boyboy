@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hln.mapper.GyProfilesDao">
+<mapper namespace="com.boy.mapper.GyProfilesDao">
 
-    <resultMap type="com.hln.pojo.GyProfiles" id="GyProfilesMap">
+    <resultMap type="com.boy.pojo.GyProfiles" id="GyProfilesMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="same" column="same" jdbcType="INTEGER"/>
@@ -61,7 +61,7 @@
         where del_flag = 0
     </select>
 
-    <select id="queryAllPage" resultType="com.hln.pojo.GyProfiles">
+    <select id="queryAllPage" resultType="com.boy.pojo.GyProfiles">
         select
             <include refid="GyP"/>
         from
