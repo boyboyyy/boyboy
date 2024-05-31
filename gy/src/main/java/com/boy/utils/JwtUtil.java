@@ -1,7 +1,7 @@
 package com.boy.utils;
 
 
-import com.gsxy.guide.domain.User;
+import com.boy.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;

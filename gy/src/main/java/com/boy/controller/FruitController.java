@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @since 2024-05-31 09:19:03
  */
 @RestController
-@RequestMapping("fruit")
+@RequestMapping(value = "fruit", produces = "text/plain;charset=UTF-8")
 public class FruitController {
     /**
      * 服务对象

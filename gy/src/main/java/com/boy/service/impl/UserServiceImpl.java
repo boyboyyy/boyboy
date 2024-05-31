@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService{
         Long aLong = userMapper.userReg(new User(
                 userLoginBo.getUsername(),
                 userLoginBo.getPassword(),
+                0,
                 new Date(),
                 new Date(),
                 0

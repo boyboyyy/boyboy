@@ -15,17 +15,26 @@
     <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
   </resultMap>
 
+  <!-- 用户名查找用户 -->
+  <select id="findByUsername" resultType="com.boy.domain.User" >
+    select *
+    from user
+    where
+    username =#{username}
+    limit 1
+  </select>
+
   <!--注册用户-->
-  <insert id="userReg" parameterType="com.gsxy.guide.domain.User">
+  <insert id="userReg" parameterType="com.boy.domain.User">
     insert into
     user
-    (username,password,create_time,update_time,status,del_flag)
+    (username,password,role,create_time,update_time,del_flag)
     values
-    (#{username},#{password},#{createTime},#{updateTime},#{status},#{delFlag})
+    (#{username},#{password},#{role},#{createTime},#{updateTime},#{delFlag})
   </insert>
 
   <!--更新用户登录时间-->
-  <update id="updateLoginTime" parameterType="com.gsxy.guide.domain.User">
+  <update id="updateLoginTime" parameterType="com.boy.domain.User">
     update user
     <set>
       <if test="true">
@@ -42,6 +51,7 @@
     id, username, `password`, `role`, create_time, create_by, update_time, update_by,
     del_flag
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select
@@ -49,11 +59,14 @@
     from `user`
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from `user`
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
+
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.boy.domain.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into `user` (username, `password`, `role`,
@@ -63,6 +76,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP},
       #{updateBy,jdbcType=BIGINT}, #{delFlag,jdbcType=TINYINT})
   </insert>
+
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.boy.domain.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into `user`
@@ -119,6 +133,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="com.boy.domain.User">
     <!--@mbg.generated-->
     update `user`
@@ -150,6 +166,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
   <update id="updateByPrimaryKey" parameterType="com.boy.domain.User">
     <!--@mbg.generated-->
     update `user`
@@ -163,4 +181,6 @@
       del_flag = #{delFlag,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
 </mapper>

@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @since 2024-05-31 09:19:34
  */
 @RestController
-@RequestMapping("session")
+@RequestMapping(value = "session", produces = "text/plain;charset=UTF-8")
 public class SessionController {
     /**
      * 服务对象

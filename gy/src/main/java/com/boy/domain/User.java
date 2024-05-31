@@ -19,7 +19,7 @@ public class User implements Serializable {
     /**
      * 0：普通用户；1：密码
      */
-    private Byte role;
+    private Integer role;
 
     /**
      * 创建时间
@@ -44,9 +44,51 @@ public class User implements Serializable {
     /**
      * 逻辑删除
      */
-    private Byte delFlag;
+    private Integer delFlag;
 
     private static final long serialVersionUID = 1L;
+
+
+
+    public User(String username, String password, int i, Date date, Date date1, int i1) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = i;
+        this.createTime = date;
+        this.updateTime = date1;
+        this.delFlag = i1;
+    }
+
+    public User() {
+    }
+
+    public User(Long id, String username, String password, Integer role, Date createTime, Long createBy, Date updateTime, Long updateBy, Integer delFlag) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.createTime = createTime;
+        this.createBy = createBy;
+        this.updateTime = updateTime;
+        this.updateBy = updateBy;
+        this.delFlag = delFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
+                ", updateTime=" + updateTime +
+                ", updateBy=" + updateBy +
+                ", delFlag=" + delFlag +
+                '}';
+    }
 
     public Long getId() {
         return id;
@@ -72,11 +114,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Byte getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(Byte role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
@@ -112,11 +154,11 @@ public class User implements Serializable {
         this.updateBy = updateBy;
     }
 
-    public Byte getDelFlag() {
+    public Integer getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Byte delFlag) {
+    public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
 }
