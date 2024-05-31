@@ -11,15 +11,15 @@ const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
 
   // 配置代理跨域
-  devServer: {
-    proxy: {
-      "/api": {
-        target: "http://localhost:8080",
-        pathRewrite: {
-          "^/api": "/",
-        },
-        // ws:true
-      },
+  devServer: {     
+    proxy: {     
+      "/api": {     
+        target: "http://localhost:8080",     
+        pathRewrite: {     
+          "^/api": "/",     
+        },     
+        // ws:true     
+      },     
     },
   },
 
