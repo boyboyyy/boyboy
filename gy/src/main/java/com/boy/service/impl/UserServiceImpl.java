@@ -74,7 +74,9 @@ public class UserServiceImpl implements UserService{
         user.setUpdateTime(new Date());
         userMapper.updateLoginTime(user);
 
-        return new ResponseVo("登录成功",new HashMap<String,Integer>().put(jwt,user.getRole()),"0x200");
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put(jwt, user.getRole());
+        return new ResponseVo("登录成功",hashMap,"0x200");
     }
 
 
