@@ -9,7 +9,7 @@
     <result column="first_season" jdbcType="BIGINT" property="firstSeason" />
     <result column="second_season" jdbcType="BIGINT" property="secondSeason" />
     <result column="third_season" jdbcType="BIGINT" property="thirdSeason" />
-    <result column="forth" jdbcType="BIGINT" property="forth" />
+    <result column="forth_season" jdbcType="BIGINT" property="forthSeason" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_by" jdbcType="BIGINT" property="createBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -18,12 +18,12 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, first_season, second_season, third_season, forth, create_time, create_by, 
+    id, `name`, first_season, second_season, third_season, forth_season, create_time, create_by,
     update_time, update_by, del_flag
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from `session`
     where id = #{id,jdbcType=BIGINT}
@@ -35,13 +35,13 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.boy.domain.Session" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into `session` (`name`, first_season, second_season, 
-      third_season, forth, create_time, 
-      create_by, update_time, update_by, 
+    insert into `session` (`name`, first_season, second_season,
+      third_season, forth_season, create_time,
+      create_by, update_time, update_by,
       del_flag)
-    values (#{name,jdbcType=VARCHAR}, #{firstSeason,jdbcType=BIGINT}, #{secondSeason,jdbcType=BIGINT}, 
-      #{thirdSeason,jdbcType=BIGINT}, #{forth,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{createBy,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, 
+    values (#{name,jdbcType=VARCHAR}, #{firstSeason,jdbcType=BIGINT}, #{secondSeason,jdbcType=BIGINT},
+      #{thirdSeason,jdbcType=BIGINT}, #{forthSeason,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP},
+      #{createBy,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT},
       #{delFlag,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.boy.domain.Session" useGeneratedKeys="true">
@@ -60,8 +60,8 @@
       <if test="thirdSeason != null">
         third_season,
       </if>
-      <if test="forth != null">
-        forth,
+      <if test="forthSeason != null">
+        forth_season,
       </if>
       <if test="createTime != null">
         create_time,
@@ -92,8 +92,8 @@
       <if test="thirdSeason != null">
         #{thirdSeason,jdbcType=BIGINT},
       </if>
-      <if test="forth != null">
-        #{forth,jdbcType=BIGINT},
+      <if test="forthSeason != null">
+        #{forthSeason,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -128,8 +128,8 @@
       <if test="thirdSeason != null">
         third_season = #{thirdSeason,jdbcType=BIGINT},
       </if>
-      <if test="forth != null">
-        forth = #{forth,jdbcType=BIGINT},
+      <if test="forthSeason != null">
+        forth_season = #{forth,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -149,19 +149,5 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.boy.domain.Session">
-    <!--@mbg.generated-->
-    update `session`
-    set `name` = #{name,jdbcType=VARCHAR},
-      first_season = #{firstSeason,jdbcType=BIGINT},
-      second_season = #{secondSeason,jdbcType=BIGINT},
-      third_season = #{thirdSeason,jdbcType=BIGINT},
-      forth = #{forth,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      create_by = #{createBy,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      update_by = #{updateBy,jdbcType=BIGINT},
-      del_flag = #{delFlag,jdbcType=TINYINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+
 </mapper>

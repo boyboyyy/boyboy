@@ -15,5 +15,4 @@ public interface SessionMapper {
 
     int updateByPrimaryKeySelective(Session record);
 
-    int updateByPrimaryKey(Session record);
 }

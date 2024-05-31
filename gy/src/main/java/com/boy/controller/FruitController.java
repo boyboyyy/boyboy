@@ -27,18 +27,7 @@ public class FruitController {
     private FruitService fruitService;
 
 
-    /**
-     * 分页查询
-     *
-     * @param guide 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-//    @PostMapping("/queryByPage")
-//    public String queryByPage(@RequestBody FruitPagingToGetDataBo fruitPagingToGetDataBo) {
-//
-//        return JSONArray.toJSONString(fruitService.queryByPage(fruitPagingToGetDataBo));
-//    }
+
 
     /**
      * 通过主键查询单条数据

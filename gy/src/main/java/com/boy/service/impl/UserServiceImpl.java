@@ -1,6 +1,7 @@
 package com.boy.service.impl;
 
 import com.boy.domain.bo.UserLoginBo;
+import com.boy.domain.bo.UserRegBo;
 import com.boy.domain.vo.ResponseVo;
 import com.boy.utils.JwtUtil;
 import org.springframework.stereotype.Service;
@@ -25,18 +26,18 @@ public class UserServiceImpl implements UserService{
      * @Auther Oh… Yeah!!! 2024-3-5
      * 用户注册
      */
-    public ResponseVo userReg(UserLoginBo userLoginBo){
+    public ResponseVo userReg(UserRegBo userRegBo){
 
-        System.out.println(userLoginBo);
-        User user = userMapper.findByUsername(userLoginBo.getUsername());
+        System.out.println(userRegBo);
+        User user = userMapper.findByUsername(userRegBo.getUsername());
 
         if(user != null){
             return new ResponseVo("该用户名已存在",null,"0x202");
         }
 
         Long aLong = userMapper.userReg(new User(
-                userLoginBo.getUsername(),
-                userLoginBo.getPassword(),
+                userRegBo.getUsername(),
+                userRegBo.getPassword(),
                 0,
                 new Date(),
                 new Date(),

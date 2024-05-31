@@ -2,6 +2,7 @@ package com.boy.service;
 
 import com.boy.domain.User;
 import com.boy.domain.bo.UserLoginBo;
+import com.boy.domain.bo.UserRegBo;
 import com.boy.domain.vo.ResponseVo;
 
 public interface UserService{
@@ -15,12 +16,12 @@ public interface UserService{
     ResponseVo userLogin(UserLoginBo userLoginBo);
 
     /**
-     * @param userLoginBo
+     * @param userRegBo
      * @return ResponseVo.class
      * @Auther Oh… Yeah!!! 2024-3-5
      * 用户注册
      */
-    ResponseVo userReg(UserLoginBo userLoginBo);
+    ResponseVo userReg(UserRegBo userRegBo);
 
 
 

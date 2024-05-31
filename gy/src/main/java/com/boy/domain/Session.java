@@ -29,7 +29,7 @@ public class Session implements Serializable {
     /**
      * 第四季度
      */
-    private Long forth;
+    private Long forthSeason;
 
     /**
      * 创建时间
@@ -59,21 +59,19 @@ public class Session implements Serializable {
     public Session() {
     }
 
-    public Session(Long id, String name, Long firstSeason, Long secondSeason, Long thirdSeason, Long forth, Date createTime, Long createBy, Date updateTime, Long updateBy, Byte delFlag) {
+    public Session(Long id, String name, Long firstSeason, Long secondSeason, Long thirdSeason, Long forthSeason, Date createTime, Long createBy, Date updateTime, Long updateBy, Byte delFlag) {
         this.id = id;
         this.name = name;
         this.firstSeason = firstSeason;
         this.secondSeason = secondSeason;
         this.thirdSeason = thirdSeason;
-        this.forth = forth;
+        this.forthSeason = forthSeason;
         this.createTime = createTime;
         this.createBy = createBy;
         this.updateTime = updateTime;
         this.updateBy = updateBy;
         this.delFlag = delFlag;
     }
-
-    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -115,12 +113,12 @@ public class Session implements Serializable {
         this.thirdSeason = thirdSeason;
     }
 
-    public Long getForth() {
-        return forth;
+    public Long getForthSeason() {
+        return forthSeason;
     }
 
-    public void setForth(Long forth) {
-        this.forth = forth;
+    public void setForthSeason(Long forthSeason) {
+        this.forthSeason = forthSeason;
     }
 
     public Date getCreateTime() {
@@ -171,7 +169,7 @@ public class Session implements Serializable {
                 ", firstSeason=" + firstSeason +
                 ", secondSeason=" + secondSeason +
                 ", thirdSeason=" + thirdSeason +
-                ", forth=" + forth +
+                ", forthSeason=" + forthSeason +
                 ", createTime=" + createTime +
                 ", createBy=" + createBy +
                 ", updateTime=" + updateTime +
