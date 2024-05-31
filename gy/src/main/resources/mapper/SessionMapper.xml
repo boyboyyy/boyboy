@@ -28,7 +28,16 @@
     from `session`
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+
+    <select id="selectAll" resultType="com.boy.domain.Session">
+    select
+      *
+      from
+        `session`
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from `session`
     where id = #{id,jdbcType=BIGINT}

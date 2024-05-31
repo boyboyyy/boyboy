@@ -1,5 +1,6 @@
 package com.boy.service.impl;
 
+import com.boy.domain.Fruit;
 import com.boy.domain.vo.ResponseVo;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.boy.domain.Session;
 import com.boy.mapper.SessionMapper;
 import com.boy.service.SessionService;
+
+import java.util.List;
+
 @Service
 public class SessionServiceImpl implements SessionService{
 
@@ -75,6 +79,19 @@ public class SessionServiceImpl implements SessionService{
 
         return new ResponseVo("修改成功", null,"0x200");
 
+    }
+
+
+    @Override
+    public ResponseVo selectAll() {
+
+        List<Session> sessionList = sessionMapper.selectAll();
+        System.out.println(sessionList);
+        if (sessionList == null || sessionList.size() == 0){
+            new ResponseVo("查询失败，可能不存在此信息", null,"0x500");
+        }
+
+        return new ResponseVo("查询成功", sessionList,"0x200");
     }
 
 }
