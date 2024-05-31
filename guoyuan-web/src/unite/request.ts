@@ -11,7 +11,7 @@ declare module "axios" {
 }
 
 const request = axios.create({
-    baseURL: '/api',
+    baseURL: '',
     timeout: 20000,
 })
 
