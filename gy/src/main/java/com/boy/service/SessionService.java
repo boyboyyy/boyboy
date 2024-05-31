@@ -1,18 +1,19 @@
 package com.boy.service;
 
 import com.boy.domain.Session;
+import com.boy.domain.vo.ResponseVo;
+
 public interface SessionService{
 
-    int deleteByPrimaryKey(Long id);
+    ResponseVo deleteByPrimaryKey(Long id);
 
-    int insert(Session record);
+    ResponseVo insert(Session record);
 
-    int insertSelective(Session record);
+    ResponseVo insertSelective(Session record);
 
-    Session selectByPrimaryKey(Long id);
+    ResponseVo selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Session record);
+    ResponseVo updateByPrimaryKeySelective(Session record);
 
-    int updateByPrimaryKey(Session record);
 
 }

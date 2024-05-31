@@ -3,6 +3,7 @@ package com.boy.controller;
 import com.alibaba.fastjson2.JSONArray;
 import com.boy.domain.User;
 import com.boy.domain.bo.UserLoginBo;
+import com.boy.domain.bo.UserRegBo;
 import com.boy.domain.vo.ResponseVo;
 import com.boy.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -31,17 +32,22 @@ public class UserController {
     /**
      *  @Auther Oh… Yeah!!! 2024-3-5
      *  用户注册
-     * @param userLoginBo
+     * @param userRegBo
      * @return String.class
      */
     @PostMapping("/userReg")
     @ApiOperation("用户注册")
-    public String userReg(@RequestBody UserLoginBo userLoginBo){
-        if(userLoginBo != null){
-            JSONArray.toJSONString(new ResponseVo("参数为null",null,"0x455"));
+    public String userReg(@RequestBody UserRegBo userRegBo){
+        if(userRegBo != null){
+            JSONArray.toJSONString(new ResponseVo("参数为null",null,"0x400"));
         }
 
-        return JSONArray.toJSONString(userService.userReg(userLoginBo));
+        if(userRegBo.getPassword() != userRegBo.getRePassword()){
+            JSONArray.toJSONString(new ResponseVo("两次密码输入的不一致",null,"0x400"));
+        }
+
+
+        return JSONArray.toJSONString(userService.userReg(userRegBo));
     }
 
 

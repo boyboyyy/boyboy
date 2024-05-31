@@ -1,5 +1,6 @@
 package com.boy.controller;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.boy.domain.Session;
 import com.boy.service.SessionService;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +31,8 @@ public class SessionController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public ResponseEntity<Session> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(sessionService.selectByPrimaryKey(id));
+    public String queryById(@PathVariable("id") Long id) {
+        return JSONArray.toJSONString(sessionService.selectByPrimaryKey(id));
     }
 
     /**
@@ -41,8 +42,9 @@ public class SessionController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public ResponseEntity<Integer> add(@RequestBody Session session) {
-        return ResponseEntity.ok(sessionService.insert(session));
+    public String add(@RequestBody Session session) {
+//
+        return JSONArray.toJSONString(sessionService.insert(session));
     }
 
     /**
@@ -52,8 +54,8 @@ public class SessionController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public ResponseEntity<Integer> edit(@RequestBody Session session) {
-        return ResponseEntity.ok(sessionService.updateByPrimaryKeySelective(session));
+    public String edit(@RequestBody Session session) {
+        return JSONArray.toJSONString(sessionService.updateByPrimaryKeySelective(session));
     }
 
     /**
@@ -63,8 +65,8 @@ public class SessionController {
      * @return 删除是否成功
      */
     @PostMapping("/deleteById")
-    public ResponseEntity<Integer> deleteById(@RequestParam("id")  Long id) {
-        return ResponseEntity.ok(sessionService.deleteByPrimaryKey(id));
+    public String deleteById(@RequestParam("id")  Long id) {
+        return JSONArray.toJSONString(sessionService.deleteByPrimaryKey(id));
     }
 
 }
