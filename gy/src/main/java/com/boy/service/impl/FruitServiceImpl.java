@@ -71,12 +71,12 @@ public class FruitServiceImpl implements FruitService{
     public ResponseVo selectAll() {
 
         List<Fruit> fruitList = fruitMapper.selectAll();
-
+        System.out.println(fruitList);
         if (fruitList == null || fruitList.size() == 0){
             new ResponseVo("查询失败，可能不存在此信息", null,"0x500");
         }
 
-        return new ResponseVo("查询成功", null,"0x200");
+        return new ResponseVo("查询成功", fruitList,"0x200");
     }
 
     /**

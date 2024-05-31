@@ -23,6 +23,15 @@ public class SessionController {
     @Resource
     private SessionService sessionService;
 
+    /**
+     * 查询所有
+     * @return
+     */
+    @GetMapping("/selectAll")
+    public String selectAll() {
+        return JSONArray.toJSONString(sessionService.selectAll());
+    }
+
 
     /**
      * 通过主键查询单条数据

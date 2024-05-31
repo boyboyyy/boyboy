@@ -13,6 +13,7 @@ import com.boy.domain.User;
 import com.boy.service.UserService;
 
 import java.util.Date;
+import java.util.HashMap;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -73,7 +74,7 @@ public class UserServiceImpl implements UserService{
         user.setUpdateTime(new Date());
         userMapper.updateLoginTime(user);
 
-        return new ResponseVo("登录成功",jwt,"0x200");
+        return new ResponseVo("登录成功",new HashMap<String,Integer>().put(jwt,user.getRole()),"0x200");
     }
 
 

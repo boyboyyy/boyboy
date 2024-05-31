@@ -27,7 +27,7 @@
     limit 1
   </select>
 
-    <select id="selectAll" resultType="java.lang.Integer">
+    <select id="selectAll" resultType="com.boy.domain.Fruit">
       select
         *
       from

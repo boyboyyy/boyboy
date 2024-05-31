@@ -16,4 +16,5 @@ public interface SessionService{
     ResponseVo updateByPrimaryKeySelective(Session record);
 
 
+    ResponseVo selectAll();
 }

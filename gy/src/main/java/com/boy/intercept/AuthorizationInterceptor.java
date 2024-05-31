@@ -52,6 +52,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             return false;
         }
 
+
+
         return true;
     }
 
