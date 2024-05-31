@@ -1,17 +1,20 @@
 package com.boy.service;
 
 import com.boy.domain.Fruit;
+import com.boy.domain.bo.FruitPagingToGetDataBo;
+import com.boy.domain.vo.ResponseVo;
+
 public interface FruitService{
 
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Fruit record);
-
-    int insertSelective(Fruit record);
-
-    Fruit selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Fruit record);
+    ResponseVo deleteByPrimaryKey(Long id);
 
 
+    ResponseVo insertSelective(Fruit record);
+
+    ResponseVo selectByPrimaryKey(Long id);
+
+    ResponseVo updateByPrimaryKeySelective(Fruit record);
+
+
+//    ResponseVo queryByPage(FruitPagingToGetDataBo );
 }

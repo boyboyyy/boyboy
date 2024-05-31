@@ -7,8 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface FruitMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Fruit record);
-
     int insertSelective(Fruit record);
 
     Fruit selectByPrimaryKey(Long id);

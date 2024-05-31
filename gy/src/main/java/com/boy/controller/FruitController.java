@@ -1,6 +1,8 @@
 package com.boy.controller;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.boy.domain.Fruit;
+import com.boy.domain.bo.FruitPagingToGetDataBo;
 import com.boy.service.FruitService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,14 +28,27 @@ public class FruitController {
 
 
     /**
+     * 分页查询
+     *
+     * @param guide 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+//    @PostMapping("/queryByPage")
+//    public String queryByPage(@RequestBody FruitPagingToGetDataBo fruitPagingToGetDataBo) {
+//
+//        return JSONArray.toJSONString(fruitService.queryByPage(fruitPagingToGetDataBo));
+//    }
+
+    /**
      * 通过主键查询单条数据
      *
      * @param id 主键
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public ResponseEntity<Fruit> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.fruitService.selectByPrimaryKey(id));
+    public String queryById(@PathVariable("id") Long id) {
+        return JSONArray.toJSONString(fruitService.selectByPrimaryKey(id));
     }
 
     /**
@@ -42,9 +57,9 @@ public class FruitController {
      * @param fruit 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Integer> add(Fruit fruit) {
-        return ResponseEntity.ok(this.fruitService.insert(fruit));
+    @PostMapping("/add")
+    public String add(@RequestBody  Fruit fruit) {
+        return JSONArray.toJSONString(fruitService.insertSelective(fruit));
     }
 
     /**
@@ -53,9 +68,9 @@ public class FruitController {
      * @param fruit 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Integer> edit(Fruit fruit) {
-        return ResponseEntity.ok(this.fruitService.updateByPrimaryKeySelective(fruit));
+    @PostMapping("/edit")
+    public String edit(@RequestBody Fruit fruit) {
+        return JSONArray.toJSONString(fruitService.updateByPrimaryKeySelective(fruit));
     }
 
     /**
@@ -64,9 +79,9 @@ public class FruitController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Integer> deleteById(Long id) {
-        return ResponseEntity.ok(this.fruitService.deleteByPrimaryKey(id));
+    @PostMapping("/deleteById")
+    public String deleteById(@RequestParam("id") Long id) {
+        return JSONArray.toJSONString(fruitService.deleteByPrimaryKey(id));
     }
 
 }

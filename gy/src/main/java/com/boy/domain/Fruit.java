@@ -48,6 +48,21 @@ public class Fruit implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Fruit() {
+    }
+
+    public Fruit(Long id, String name, Long area, Long production, Date createTime, Long createBy, Date updateTime, Long updateBy, Byte delFlag) {
+        this.id = id;
+        this.name = name;
+        this.area = area;
+        this.production = production;
+        this.createTime = createTime;
+        this.createBy = createBy;
+        this.updateTime = updateTime;
+        this.updateBy = updateBy;
+        this.delFlag = delFlag;
+    }
+
     public Long getId() {
         return id;
     }
@@ -118,5 +133,20 @@ public class Fruit implements Serializable {
 
     public void setDelFlag(Byte delFlag) {
         this.delFlag = delFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "Fruit{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", area=" + area +
+                ", production=" + production +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
+                ", updateTime=" + updateTime +
+                ", updateBy=" + updateBy +
+                ", delFlag=" + delFlag +
+                '}';
     }
 }

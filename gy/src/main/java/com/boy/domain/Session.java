@@ -56,6 +56,23 @@ public class Session implements Serializable {
      */
     private Byte delFlag;
 
+    public Session() {
+    }
+
+    public Session(Long id, String name, Long firstSeason, Long secondSeason, Long thirdSeason, Long forth, Date createTime, Long createBy, Date updateTime, Long updateBy, Byte delFlag) {
+        this.id = id;
+        this.name = name;
+        this.firstSeason = firstSeason;
+        this.secondSeason = secondSeason;
+        this.thirdSeason = thirdSeason;
+        this.forth = forth;
+        this.createTime = createTime;
+        this.createBy = createBy;
+        this.updateTime = updateTime;
+        this.updateBy = updateBy;
+        this.delFlag = delFlag;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -144,5 +161,22 @@ public class Session implements Serializable {
 
     public void setDelFlag(Byte delFlag) {
         this.delFlag = delFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "Session{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", firstSeason=" + firstSeason +
+                ", secondSeason=" + secondSeason +
+                ", thirdSeason=" + thirdSeason +
+                ", forth=" + forth +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
+                ", updateTime=" + updateTime +
+                ", updateBy=" + updateBy +
+                ", delFlag=" + delFlag +
+                '}';
     }
 }

@@ -18,27 +18,20 @@
     <!--@mbg.generated-->
     id, `name`, area, production, create_time, create_by, update_time, update_by, del_flag
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
     select
-    <include refid="Base_Column_List" />
+    *
     from fruit
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from fruit
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.boy.domain.Fruit" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into fruit (`name`, area, production,
-      create_time, create_by, update_time,
-      update_by, del_flag)
-    values (#{name,jdbcType=VARCHAR}, #{area,jdbcType=BIGINT}, #{production,jdbcType=BIGINT},
-      #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP},
-      #{updateBy,jdbcType=BIGINT}, #{delFlag,jdbcType=TINYINT})
-  </insert>
+
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.boy.domain.Fruit" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into fruit
