@@ -1,3 +1,11 @@
+/*
+ * @Author: Oh...Yeah!!! 614988210@qq.com
+ * @Date: 2024-06-01 11:41:00
+ * @LastEditors: Oh...Yeah!!! 614988210@qq.com
+ * @LastEditTime: 2024-06-01 11:43:42
+ * @FilePath: \guoyuan-web\src\api\Fruit.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import request from '@/unite/request'
 //获取苹果的信息接口
 // export const getFruitApply = (token: String) => {

@@ -27,7 +27,7 @@ minio:
   readPath: http://47.96.226.103:9000
 
 server:
-  port: 8080
+  port: 8085
 
 # 选择api项目下的resouces路径下的user文件夹
 # filePath: "/Users/yangyida/Documents/project/complaint_system/web-server/src/main/resources/img/user/"
