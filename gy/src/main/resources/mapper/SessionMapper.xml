@@ -138,7 +138,7 @@
         third_season = #{thirdSeason,jdbcType=BIGINT},
       </if>
       <if test="forthSeason != null">
-        forth_season = #{forth,jdbcType=BIGINT},
+        forth_season = #{forthSeason,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
