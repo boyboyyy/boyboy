@@ -44,7 +44,7 @@
                   </el-icon>
                   <template #dropdown>
                     <el-dropdown-menu>
-                      <el-dropdown-item>退出登录</el-dropdown-item>
+                      <el-dropdown-item @click="outlogin">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                   </template>
                 </el-dropdown>
@@ -66,7 +66,7 @@
 import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
 import { onMounted } from "vue";
 import { useRouter } from 'vue-router'
-
+import { getCookie, delCookie } from '@/unite/cookie'
 //路由跳转变量
 const Router = useRouter();
 //跳转去苹果园
@@ -88,6 +88,13 @@ const toLiu = () => {
 //跳转去草莓信息
 const toStrawbery = () => {
   Router.push('/home/strawberry')
+}
+//退出登录
+const outlogin = () => {
+  if (getCookie('token')) {
+    delCookie('token')
+    Router.push('/')
+  }
 }
 onMounted(() => {
 

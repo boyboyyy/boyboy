@@ -30,10 +30,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from 'axios'
 import { setCookie } from '@/unite/cookie'
 import { ElNotification } from 'element-plus'
-import { loginByroot } from '@/api/login'
+import { loginByroot } from '@/api/user'
 //路由跳转变量
 const Router = useRouter();
 const user = reactive({
@@ -44,8 +43,8 @@ const user = reactive({
 const login = async () => {
   const result: any = await loginByroot(user)
   if (result.data.code == '0x200') {
-    setCookie('token', { token: result.data.token }, 24)
-    setCookie('user', result.data.data, 24)
+    setCookie('token', result.data.data.token, 24)
+    // setCookie('user', , 24)
     Router.push('/home')
     ElNotification({
       title: '登录成功',
@@ -66,7 +65,7 @@ const login = async () => {
 //去注册
 const toRegister = () => {
   Router.push('/register')
-  console.log('submit!')
+  // console.log('submit!')
 }
 </script>
 <style scoped>
@@ -109,3 +108,4 @@ const toRegister = () => {
   border-color: #46eac2 !important;
 }
 </style>
+@/api/user

@@ -6,17 +6,17 @@ import request from '@/unite/request'
 
 //模拟的接口
 //获取苹果的信息接口
-import axios from 'axios'
+// import axios from 'axios'
 export const getFruit = () => {
-    return axios.post<any, any>('api/news/fruit')
+    return request.get<any, any>('api/fruit/selectAll')
 }
 //获取苹果修改的信息接口
 export const fixFruit = (fixData: any) => {
-    return axios.post<any, any>('api/fix/news', fixData)
+    return request.post<any, any>('api/fruit/edit', fixData)
 }
 //获取删除苹果的删除接口
-// export const deleteFruit = (deleteId: any) => {
-//     return axios.post<any, any>('api/delete/news', deleteId)
-// }
+export const deleteFruit = (deleteId: any) => {
+    return request.post<any, any>(`api/fruit/deleteById?id=${deleteId}`)
+}
 
 

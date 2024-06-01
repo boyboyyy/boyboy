@@ -11,11 +11,11 @@
           <el-form-item prop="username">
             <el-input v-model="user.username" placeholder="请输入账号"></el-input>
           </el-form-item>
-          <el-form-item prop="password1">
-            <el-input v-model="user.password1" placeholder="请输入密码"></el-input>
+          <el-form-item prop="password">
+            <el-input v-model="user.password" show-password placeholder="请输入密码"></el-input>
           </el-form-item>
-          <el-form-item prop="password2">
-            <el-input v-model="user.password2" placeholder="再次输入密码"></el-input>
+          <el-form-item prop="password1">
+            <el-input v-model="password1" show-password placeholder="再次输入密码"></el-input>
           </el-form-item>
 
           <el-form-item>
@@ -31,39 +31,62 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from 'axios'
+import { registerByroot } from '@/api/user'
 import { ElNotification } from 'element-plus'
 
 //路由跳转变量
 const Router = useRouter();
 const user = reactive({
   username: '',
-  password1: '',
-  password2: ''
-
+  password: '',
 })
+//二次密码
+let password1 = ref();
 //去登录
 const toLogin = () => {
   Router.push('/')
 }
 //去注册
-const register = () => {
-  axios.post('api/register/news', {
-    username: user.username,
-    password1: user.password1,
-    password2: user.password2,
-  }).then(res => {
-    if (res.data.status == 200) {
-      Router.push('/')
-      ElNotification({
-        title: '注册成功',
-        message: '正在前往登录界面',
-        type: 'success',
-      })
-    }
-  })
+// const register = () => {
+//   if (user.password === password1.value) {
+//     registerByroot(user).then(res => {
+//       if (res.code == '0x200') {
+//         Router.push('/')
+//         ElNotification({
+//           title: '注册成功',
+//           message: '正在前往登录界面',
+//           type: 'success',
+//         })
+//       }
+//     })
+//   } else {
+//     ElNotification({
+//       title: '注册失败',
+//       message: '设置密码错误',
+//       type: 'error',
+//     })
+//   }
+
+// }
+const register = async () => {
+  const result: any = await registerByroot(user)
+  console.log(result, 'register');
+  if (result.data.code == '0x200') {
+    ElNotification({
+      title: '注册成功',
+      message: '正在前往登录界面',
+      type: 'success',
+    })
+    Router.push('/')
+  } else {
+    ElNotification({
+      title: '注册失败',
+      message: '设置密码错误',
+      type: 'error',
+    })
+  }
 }
 </script>
 <style>

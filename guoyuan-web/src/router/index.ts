@@ -13,21 +13,21 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/home",
     name: "home",
-    component: HomeView,    
-    redirect: '/home/apply',    
-    children: [    
-      {    
-        path: 'apply', name: 'apply', component: () =>    
-          import(/* webpackChunkName: "apply组件" */ "../views/Fruit/apply.vue"),    
-      },    
-      {    
-        path: 'banana', name: 'banana', component: () =>    
-          import(/* webpackChunkName: "banana组件" */ "../views/Fruit/banana.vue"),    
-      },    
-      {    
-        path: 'formdata', name: 'formdata', component: () =>    
-          import(/* webpackChunkName: "formdata组件" */ "../views/FormData/index.vue"),    
-      },    
+    component: HomeView,
+    redirect: '/home/apply',
+    children: [
+      {
+        path: 'apply', name: 'apply', component: () =>
+          import(/* webpackChunkName: "apply组件" */ "../views/Fruit/apply.vue"),
+      },
+      {
+        path: 'banana', name: 'banana', component: () =>
+          import(/* webpackChunkName: "banana组件" */ "../views/Fruit/banana.vue"),
+      },
+      {
+        path: 'formdata', name: 'formdata', component: () =>
+          import(/* webpackChunkName: "formdata组件" */ "../views/FormData/index.vue"),
+      },
       // {    
       //   path: 'strawberry', name: 'strawberry', component: () =>    
       //     import(/* webpackChunkName: "草莓组件" */ "../views/Fruit/strawberry.vue"),    
@@ -72,7 +72,7 @@ router.beforeEach((to, from, next) => {
     //已经登录了，如果还想登录或注册不允许
     if (to.path == '/' || to.path == '/register') {
       //已经登录了，不允许去登录和注册了
-      next('/home/apply')
+      next('/')
     } else {
       //如果登录了，但权限是用户的，不放行去管理员页面
       const auth = getCookie('user')

@@ -1,15 +1,8 @@
-/*
- * @Author: Oh...Yeah!!! 614988210@qq.com
- * @Date: 2024-05-31 21:46:54
- * @LastEditors: Oh...Yeah!!! 614988210@qq.com
- * @LastEditTime: 2024-05-31 22:22:06
- * @FilePath: \guoyuan-web\src\unite\request.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
+
 
 import axios from "axios";
 // import VueCookie from 'vue-cookie';
-
+import { getCookie } from '@/unite/cookie'
 const http = axios.create({
     timeout: 1000 * 30,
     withCredentials: true,
@@ -25,9 +18,9 @@ const http = axios.create({
 * @returns 
 */
 http.interceptors.request.use(config => {
-    // const token = VueCookie.get("token");
+    const token = getCookie("token");
     //设置请求头
-    // config.headers['Authorization'] = token;
+    config.headers['Authorization'] = token;
     config.headers['accept'] = '*/*'
 
     return config;

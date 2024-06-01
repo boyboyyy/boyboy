@@ -18,8 +18,9 @@
 </template>
 <script lang="ts" setup>
 // import echarts from '@/unite/echarts'
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, onMounted, onBeforeUnmount, inject, onBeforeMount } from 'vue'
 import echart from '@/components/echarts.vue';
+import bus from '@/unite/mitt';
 //第一张图
 const option = {
     title: {
@@ -29,7 +30,7 @@ const option = {
         trigger: 'axis'
     },
     legend: {
-        data: ['苹果', '香蕉', '草莓']
+        data: ['草莓', '苹果', '榴莲', '梨子']
     },
     grid: {
         left: '2%',
@@ -50,19 +51,24 @@ const option = {
     },
     series: [
         {
-            name: '苹果',
-            type: 'line',
-            data: [120, 132, 101, 134]
-        },
-        {
-            name: '香蕉',
-            type: 'line',
-            data: [300, 544, 444, 449]
-        },
-        {
             name: '草莓',
             type: 'line',
-            data: [220, 182, 191, 234]
+            data: [454, 656, 245, 653]
+        },
+        {
+            name: '苹果',
+            type: 'line',
+            data: [545, 315, 152, 346]
+        },
+        {
+            name: '榴莲',
+            type: 'line',
+            data: [250, 600, 254, 215]
+        },
+        {
+            name: '梨子',
+            type: 'line',
+            data: [240, 444, 346, 314]
         },
     ]
 };
@@ -85,10 +91,10 @@ const option1 = {
             type: 'pie',
             radius: '50%',
             data: [
-                { value: 1048, name: '榴莲' },
-                { value: 735, name: '香蕉' },
-                { value: 580, name: '草莓' },
-                { value: 580, name: '苹果' },
+                { value: 200, name: '栗子' },
+                { value: 245, name: '香蕉' },
+                { value: 297, name: '水蜜桃' },
+                { value: 245, name: '草莓' },
 
             ],
             emphasis: {
@@ -118,7 +124,7 @@ const option2 = {
     },
     xAxis: {
         type: 'category',
-        data: ['苹果', '草莓', '榴莲', '香蕉']
+        data: ['栗子', '香蕉', '水蜜桃', '草莓']
     },
     yAxis: {
         type: 'value',
@@ -129,7 +135,7 @@ const option2 = {
     series: [
         {
             barWidth: '30%',
-            data: [120, 200, 150, 80, 70, 110, 130],
+            data: [200, 245, 297, 245],
             type: 'bar'
         }
     ]
@@ -202,7 +208,18 @@ const option3 = {
 
 };
 onMounted(() => {
-    console.log(option.series, 'ssjk');
+    console.log(inject('applyData'), '接收数据');
+
+})
+
+
+
+// 在组件卸载之前移除监听
+onBeforeUnmount(() => {
+    bus.off('applyData', (mess: any) => {
+        console.log(mess, "卸载"
+        );
+    });
 })
 
 </script>
