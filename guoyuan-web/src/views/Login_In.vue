@@ -52,7 +52,7 @@ const login = async () => {
       type: 'success',
     })
   } else {
-    if (result.data.code === 401) {
+    if (result.data.code === '0x500') {
       ElNotification({
         title: '登录失败',
         message: '账号或密码错误',

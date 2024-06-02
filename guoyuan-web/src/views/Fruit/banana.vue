@@ -66,24 +66,7 @@ let dialogVisible = ref(false)
 //修改表单时输入的数据
 let userUpData: any = reactive({
     id: '',
-    // name: '',
-    // firstSeason: null,
-    // secondSeason: null,
-    // thirdSeason: null,
-    // forthSeason: null,
-    // createTime: '2024-03-15',
-    // createBy: 1,
-    // updateTime: '2024-03-15',
-    // updateBy: 1,
-    // delFlag: 0
-    // id: "8",
-    // firstSeason: 666666,
-    // secondSeason: 111111,
-    // createTime: "2024-03-15",
-    // createBy: 1,
-    // updateTime: "2024-03-15",
-    // updateBy: 1,
-    // delFlag: 0
+
 })
 
 //修改的按钮

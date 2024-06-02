@@ -45,11 +45,9 @@
     </el-dialog>
 </template>
 <script lang="ts" setup>
-import { ref, reactive, onMounted, onBeforeMount, provide } from 'vue'
-import bus from '@/unite/mitt';
+import { ref, reactive, onMounted, onBeforeMount,  } from 'vue'
 import { ElNotification } from 'element-plus'
 import { getFruit, fixFruit, deleteFruit } from '@/api/Fruit'
-let date: any;
 
 //水果的信息
 let tableData = ref([])
@@ -120,7 +118,6 @@ const handleDelete = async (index: any, scope: any) => {
 //获取苹果信息
 const fruit = async () => {
     const result: any = await getFruit()
-    provide('applyData', result)
     console.log(result, 'dsds');
     if (result.data.code === '0x200') {
         tableData.value = result.data.data
@@ -130,7 +127,6 @@ const fruit = async () => {
 
 onMounted(() => {
     fruit()
-    console.log(date, '接收的数据');
 
 
 })

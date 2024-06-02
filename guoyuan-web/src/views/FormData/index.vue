@@ -20,9 +20,72 @@
 // import echarts from '@/unite/echarts'
 import { ref, reactive, onMounted, onBeforeUnmount, inject, onBeforeMount } from 'vue'
 import echart from '@/components/echarts.vue';
-import bus from '@/unite/mitt';
+import { getFruit, } from '@/api/Fruit'
+import { getFruitSeason } from '@/api/season'
+//水果的信息
+let tableData: any;
+//获取水果的面积
+const fruit = async () => {
+    const result: any = await getFruit()
+    if (result.data.code === '0x200') {
+        tableData = result.data.data
+        let num = option1.series[0].data.map(function (elem) {
+            return elem
+        })
+        let num2: any = tableData.map(function (elem: any) {
+            return { value: elem.area, name: elem.name }
+        })
+        num = num2;
+        option1.series[0].data = num
+        // console.log(tableData);
+
+        // 匹配产量的值
+        let inputData: any = tableData.map(function (elem: any) {
+            // return  type: 'category', data: [elem.production] 
+            return elem.name
+        })
+        option2.xAxis.data = inputData
+        // console.log(option2.xAxis);
+        //匹配产量series值
+        let inputSeries: any = tableData.map((item: any) => {
+            return item.production
+        })
+        option2.series[0].data = inputSeries
+        console.log(option2.series, 'inputSeries');
+        console.log(option2.xAxis, 'inputxAxis');
+
+
+
+
+    }
+}
+let num1 = ref()
+//获取季度的信息
+let seasonData: any;
+const fruitSeason = async () => {
+    const result: any = await getFruitSeason()
+    if (result.data.code === '0x200') {
+        seasonData = result.data.data
+        //匹配legend中的name的数据
+        num1.value = seasonData.map((item: any) => {
+            return item.name
+        })
+        option.legend.data = num1.value;
+
+        //匹配series中的数据
+        let num2 = seasonData.map((item: any) => {
+            return { name: item.name, type: 'line', data: [item.firstSeason, item.secondSeason, item.thirdSeason, item.forthSeason] }
+        })
+        option.series = num2
+    }
+}
+onMounted(() => {
+    fruit()
+    fruitSeason()
+})
+
 //第一张图
-const option = {
+const option = reactive({
     title: {
         text: '水果销售额'
     },
@@ -30,7 +93,7 @@ const option = {
         trigger: 'axis'
     },
     legend: {
-        data: ['草莓', '苹果', '榴莲', '梨子']
+        data: []
     },
     grid: {
         left: '2%',
@@ -51,29 +114,14 @@ const option = {
     },
     series: [
         {
-            name: '草莓',
-            type: 'line',
-            data: [454, 656, 245, 653]
-        },
-        {
-            name: '苹果',
-            type: 'line',
-            data: [545, 315, 152, 346]
-        },
-        {
-            name: '榴莲',
-            type: 'line',
-            data: [250, 600, 254, 215]
-        },
-        {
-            name: '梨子',
-            type: 'line',
-            data: [240, 444, 346, 314]
-        },
+            // name: '草莓',
+            // type: 'line',
+            // data: [454, 656, 245, 653]
+        }
     ]
-};
+});
 //第二张图
-const option1 = {
+const option1 = reactive({
     title: {
         text: '水果的种植面积',
         left: 'center'
@@ -91,11 +139,10 @@ const option1 = {
             type: 'pie',
             radius: '50%',
             data: [
-                { value: 200, name: '栗子' },
-                { value: 245, name: '香蕉' },
-                { value: 297, name: '水蜜桃' },
-                { value: 245, name: '草莓' },
-
+                // { value: 200, name: '栗子' },
+                // { value: 245, name: '香蕉' },
+                // { value: 297, name: '水蜜桃' },
+                // { value: 245, name: '草莓' },
             ],
             emphasis: {
                 itemStyle: {
@@ -106,9 +153,9 @@ const option1 = {
             }
         }
     ]
-};
+});
 //第三张图
-const option2 = {
+const option2 = reactive({
     title: {
         text: '水果产值'
     },
@@ -124,7 +171,7 @@ const option2 = {
     },
     xAxis: {
         type: 'category',
-        data: ['栗子', '香蕉', '水蜜桃', '草莓']
+        data: []
     },
     yAxis: {
         type: 'value',
@@ -135,11 +182,11 @@ const option2 = {
     series: [
         {
             barWidth: '30%',
-            data: [200, 245, 297, 245],
+            data: [],
             type: 'bar'
         }
     ]
-};
+});
 //第四张图
 const option3 = {
     title: {
@@ -207,20 +254,18 @@ const option3 = {
     ]
 
 };
+onBeforeMount(() => {
+
+
+
+})
 onMounted(() => {
-    console.log(inject('applyData'), '接收数据');
+    fruit();
 
 })
 
 
 
-// 在组件卸载之前移除监听
-onBeforeUnmount(() => {
-    bus.off('applyData', (mess: any) => {
-        console.log(mess, "卸载"
-        );
-    });
-})
 
 </script>
 <style less>

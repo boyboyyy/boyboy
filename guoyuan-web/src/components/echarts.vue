@@ -20,8 +20,7 @@ const props = defineProps({
 onMounted(() => {
     myChart = echarts.init(chartDom.value)
     myChart.setOption(props.options, true)
-    console.log(myChart, 'mychart');
-
+    // console.log(props.options, 'mychart');
     // window.addEventListener('resize', resizeHandler)
 })
 watch(() => props.options, (newOptions) => {
